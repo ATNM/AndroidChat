@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "610239997431",
+    "firebase_url": "https://chat-app-b72f8.firebaseio.com",
+    "project_id": "chat-app-b72f8",
+    "storage_bucket": "chat-app-b72f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610239997431:android:be3f2a59f7517a1b",
+        "android_client_info": {
+          "package_name": "com.airtouch.adrian.mychat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610239997431-3ui1fovlfn1fsi2051rg0u10kha3ntun.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.airtouch.adrian.mychat",
+            "certificate_hash": "CB6A171B777A8770C23034705237CBBA27F80EE6"
+          }
+        },
+        {
+          "client_id": "610239997431-dek6d631ume4jk4bdg23obk4kj416k3k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUC7YUELufJAwZGH8d_S6pFfi2EFaO-pI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610239997431-dek6d631ume4jk4bdg23obk4kj416k3k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
