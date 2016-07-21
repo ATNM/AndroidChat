@@ -18,5 +18,19 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ContactFragment extends Fragment {
+    public ContactFragment() {
 
+    }
+
+    public static ContactFragment newInstance() {
+        ContactFragment fragment = new ContactFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        return inflater.inflate(R.layout.fragment_contact, container, false);
+    }
 }

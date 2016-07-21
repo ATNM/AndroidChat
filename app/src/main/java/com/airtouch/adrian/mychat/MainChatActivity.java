@@ -3,6 +3,7 @@ package com.airtouch.adrian.mychat;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,7 +17,7 @@ import Model.Model;
 import Model.User;
 import Util.API;
 
-public class MainChatActivity extends Activity implements TabLayout.OnTabSelectedListener, View.OnClickListener {
+public class MainChatActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener, View.OnClickListener {
 
     private ProgressBar mProgressBar;
     // private FirebaseListAdater
@@ -29,7 +30,7 @@ public class MainChatActivity extends Activity implements TabLayout.OnTabSelecte
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Contacts"));
         tabLayout.setOnClickListener(this);
-
+/*
         // check if the user is logged in
         if (!API.getInstance().isUserLoggedIn()){
             startActivity(new Intent(this, LoginActivity.class));
@@ -48,10 +49,12 @@ public class MainChatActivity extends Activity implements TabLayout.OnTabSelecte
             // subscribe to notifications by using your user id as the topic
             API.getInstance().subscribeToTopic(Model.user.getId());
 
-            //FragmentTransaction _transaction = getSupportFragmentManager().beginTransaction();
-            //_transaction.replace(R.id.home_container, ContactFragment.newInstance());
-            //_transaction.commit();
-        }
+
+        }*/
+
+        FragmentTransaction _transaction = getSupportFragmentManager().beginTransaction();
+        _transaction.replace(R.id.home_container, ContactFragment.newInstance());
+        _transaction.commit();
     }
 
     @Override
