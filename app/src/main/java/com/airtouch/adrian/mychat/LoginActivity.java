@@ -1,5 +1,6 @@
 package com.airtouch.adrian.mychat;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import Util.API;
+import Util.Constants;
 
 public class LoginActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener{
@@ -30,6 +32,16 @@ public class LoginActivity extends AppCompatActivity implements
                 API.getInstance().showLoginPopup(LoginActivity.this, LoginActivity.this);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == Constants.SIGN_IN_CODE) {
+            API.getInstance().firebaseAuthWithGoogle(this, MainChatActivity.class, data);
+        }
     }
 
     @Override

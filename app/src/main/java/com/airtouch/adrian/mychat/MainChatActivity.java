@@ -1,16 +1,22 @@
 package com.airtouch.adrian.mychat;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.google.firebase.auth.FirebaseUser;
+
+import Model.Model;
+import Model.User;
 import Util.API;
 
-public class MainChatActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener, View.OnClickListener {
+public class MainChatActivity extends Activity implements TabLayout.OnTabSelectedListener, View.OnClickListener {
 
     private ProgressBar mProgressBar;
     // private FirebaseListAdater
@@ -30,11 +36,21 @@ public class MainChatActivity extends AppCompatActivity implements TabLayout.OnT
             finish();
             return;
         } else {
-            // TODO: subscribe for notifications
 
-            FragmentTransaction _transaction = getSupportFragmentManager().beginTransaction();
-            _transaction.replace(R.id.home_container, ContactFragment.newInstance());
-            _transaction.commit();
+
+            // else, setup the user model
+            FirebaseUser firebaseUser = API.getInstance().getCurrentUser();
+            Model.user = new User(firebaseUser);
+
+            // add the user to the database
+            API.getInstance().addUserToDatabase(Model.user);
+
+            // subscribe to notifications by using your user id as the topic
+            API.getInstance().subscribeToTopic(Model.user.getId());
+
+            //FragmentTransaction _transaction = getSupportFragmentManager().beginTransaction();
+            //_transaction.replace(R.id.home_container, ContactFragment.newInstance());
+            //_transaction.commit();
         }
     }
 
@@ -50,11 +66,42 @@ public class MainChatActivity extends AppCompatActivity implements TabLayout.OnT
 
     @Override
     public void onTabReselected(TabLayout.Tab tab){
-
+        if (tab.getPosition() == 0) {
+            //getSupportFragmentManager().popBackStackImmediate();
+        }
     }
 
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.sign_out_menu:
+                // unsubscribe from push on this account
+                API.getInstance().unsubscribeFromTopic(Model.user.getId());
+
+                // sign out
+                API.getInstance().signOut();
+
+                // invalidate the user model
+                Model.user = new User();
+
+                // start the login activity
+                startActivity(new Intent(this, LoginActivity.class));
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
