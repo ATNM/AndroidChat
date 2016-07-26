@@ -1,14 +1,24 @@
 package com.airtouch.adrian.chatex2;
 
 import android.content.Intent;
+import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.MaterialProgressDrawable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ButtonBarLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseUser;
 
 import Model.Model;
@@ -16,6 +26,8 @@ import Model.User;
 import Util.API;
 
 public class MainChatActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
