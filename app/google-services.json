@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "610239997431",
-    "firebase_url": "https://chat-app-b72f8.firebaseio.com",
-    "project_id": "chat-app-b72f8",
-    "storage_bucket": "chat-app-b72f8.appspot.com"
+    "project_number": "1018449939230",
+    "firebase_url": "https://chatapp-36d80.firebaseio.com",
+    "project_id": "chatapp-36d80",
+    "storage_bucket": "chatapp-36d80.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:610239997431:android:be3f2a59f7517a1b",
+        "mobilesdk_app_id": "1:1018449939230:android:d7da6dd0c794f865",
         "android_client_info": {
-          "package_name": "com.airtouch.adrian.mychat"
+          "package_name": "com.airtouch.test.mychat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "610239997431-3ui1fovlfn1fsi2051rg0u10kha3ntun.apps.googleusercontent.com",
+          "client_id": "1018449939230-4nvhhqr5ig9emarl4etrheoakrafkh8l.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.airtouch.adrian.mychat",
-            "certificate_hash": "CB6A171B777A8770C23034705237CBBA27F80EE6"
+            "package_name": "com.airtouch.test.mychat",
+            "certificate_hash": "40F65218B808941258C2A08192BB13EEC4760AD8"
           }
         },
         {
-          "client_id": "610239997431-dek6d631ume4jk4bdg23obk4kj416k3k.apps.googleusercontent.com",
+          "client_id": "1018449939230-dklc1mirtiirfnkpl0b23g06t2hmgkd6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAUC7YUELufJAwZGH8d_S6pFfi2EFaO-pI"
+          "current_key": "AIzaSyBf2epG-UNMfAoK-ihRdnlNgquuR60ChMg"
         }
       ],
       "services": {
@@ -40,7 +40,51 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "610239997431-dek6d631ume4jk4bdg23obk4kj416k3k.apps.googleusercontent.com",
+              "client_id": "1018449939230-dklc1mirtiirfnkpl0b23g06t2hmgkd6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1018449939230:android:1e0496e845d8c024",
+        "android_client_info": {
+          "package_name": "com.airtouch.adrian.chatex2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1018449939230-ni42l9kuptoof1cb0j513f43j9s59r5p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.airtouch.adrian.chatex2",
+            "certificate_hash": "40F65218B808941258C2A08192BB13EEC4760AD8"
+          }
+        },
+        {
+          "client_id": "1018449939230-dklc1mirtiirfnkpl0b23g06t2hmgkd6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf2epG-UNMfAoK-ihRdnlNgquuR60ChMg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1018449939230-dklc1mirtiirfnkpl0b23g06t2hmgkd6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,4 +1,4 @@
-package com.airtouch.adrian.mychat;
+package com.airtouch.adrian.chatex2;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

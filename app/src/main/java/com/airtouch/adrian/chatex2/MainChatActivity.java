@@ -1,15 +1,13 @@
-package com.airtouch.adrian.mychat;
+package com.airtouch.adrian.chatex2;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ProgressBar;
 
 import com.google.firebase.auth.FirebaseUser;
 
@@ -17,28 +15,23 @@ import Model.Model;
 import Model.User;
 import Util.API;
 
-public class MainChatActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener, View.OnClickListener {
-
-    private ProgressBar mProgressBar;
-    // private FirebaseListAdater
+public class MainChatActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_chat);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        tabLayout.addTab(tabLayout.newTab().setText("Contacts"));
-        tabLayout.setOnClickListener(this);
-/*
-        // check if the user is logged in
-        if (!API.getInstance().isUserLoggedIn()){
+        setupTabLayout();
+
+        // if the user is not logged in, start the login activity
+        if (!API.getInstance().isUserLoggedIn()) {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
             return;
         } else {
-
-
             // else, setup the user model
             FirebaseUser firebaseUser = API.getInstance().getCurrentUser();
             Model.user = new User(firebaseUser);
@@ -48,35 +41,21 @@ public class MainChatActivity extends AppCompatActivity implements TabLayout.OnT
 
             // subscribe to notifications by using your user id as the topic
             API.getInstance().subscribeToTopic(Model.user.getId());
-
-
-        }*/
-
-        FragmentTransaction _transaction = getSupportFragmentManager().beginTransaction();
-        _transaction.replace(R.id.home_container, ContactFragment.newInstance());
-        _transaction.commit();
-    }
-
-    @Override
-    public void onTabSelected(TabLayout.Tab tab){
-
-    }
-
-    @Override
-    public void onTabUnselected(TabLayout.Tab tab){
-
-    }
-
-    @Override
-    public void onTabReselected(TabLayout.Tab tab){
-        if (tab.getPosition() == 0) {
-            //getSupportFragmentManager().popBackStackImmediate();
         }
+
+        showContacts();
     }
 
-    @Override
-    public void onClick(View v) {
+    private void setupTabLayout() {
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        tabLayout.addTab(tabLayout.newTab().setText("Contacts"));
+        tabLayout.setOnTabSelectedListener(this);
+    }
 
+    public void showContacts() {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.home_container, ContactFragment.newInstance());
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -105,6 +84,23 @@ public class MainChatActivity extends AppCompatActivity implements TabLayout.OnT
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
+        if (tab.getPosition() == 0) {
+            getSupportFragmentManager().popBackStackImmediate();
         }
     }
 }
