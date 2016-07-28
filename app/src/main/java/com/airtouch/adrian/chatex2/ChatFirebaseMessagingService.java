@@ -7,7 +7,7 @@ import com.google.firebase.messaging.RemoteMessage;
 
 /**
  * Created by atnm1 on 28/07/16.
- * Logging purposes
+ * Logging purposesprefere
  */
 public class ChatFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "ChatFMService";

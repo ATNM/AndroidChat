@@ -148,6 +148,11 @@ public class ChatFragment extends Fragment {
 
                 // reset the text field
                 mMessageEditText.setText("");
+
+                // send notification
+                new SendNotificationTask(mOtherUser.getId(), Model.user.getName(), message.getText(), Model.user.getId()).execute();
+
+
             }
         });
     }
